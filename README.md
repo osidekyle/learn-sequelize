@@ -1,0 +1,2 @@
+# learn-sequelize
+Learning sequelize
