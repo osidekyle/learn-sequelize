@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate({User}) {
       // define association here
       //userId
-      this.belongsTo(User,{foreignKey:'userId'})
+      this.belongsTo(User,{foreignKey:'userId',as:"user"})
+    }
+    toJSON(){
+      return {...this.get(),id:undefined,userId:undefined}
     }
   };
   Post.init({
@@ -21,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue:DataTypes.UUIDV4,
     },
     body: {
-      type:DataTypes.String,
+      type:DataTypes.STRING,
       allowNull:false
     }
   }, {
